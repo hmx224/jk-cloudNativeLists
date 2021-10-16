@@ -9,4 +9,4 @@ EXPOSE 80
 
 ENV NAME helloworld
 
-ENTRYPOINT /httpserver
+ENTRYPOINT /bin/httpserver
