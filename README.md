@@ -106,4 +106,22 @@ SET GOARCH=amd64  // 目标处理器架构是amd64
 
 go build -o bin/amd64/httpserver httpserver.go
 
+## 错误信息
+### 1、关于云服务器中拉取远程镜像后，宿主机：ip:port/request 失败； 容器主机正常
 
+提交docker的主机没异常；但是换了另外一台服务器拉镜像出错：
+
+docker run -p 9091:8888 firehmx/httpserver:v1
+
+宿主机ip:9091，如下错误：
+```
+curl: (7) Failed connect to 172.18.78.109:9091; No route to host
+```
+
+但是容器ip:8888 正确 ， 还请老师看到帮忙看看，我也继续查查
+
+### 2、Dockerfile 中 命令报权限问题
+
+执行go二进制包，构建镜像后，run的时候，提示没权限；
+
+因为在宿主机也没权限运行，宿主机文件加上权限777，重新构建成功
